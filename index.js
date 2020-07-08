@@ -1,7 +1,7 @@
-const Koa = require('koa')
-const app = new Koa()
-
+const app = require('./koa')
 const conf = require('./config')
+
+const router = require('./router')
 
 app.use(ctx => {
   ctx.body = 'hello Syncword'
