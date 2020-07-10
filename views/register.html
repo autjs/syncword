@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <meta charset="utf8">
+    <style>
+      .page-container {
+        width: 90vmin;
+        margin: 0 auto;
+      }
+
+      .page-container input {
+        width: 100%;
+        line-height: 40px;
+        border: 0;
+        outline:none;
+        padding: 0;
+      }
+
+      .page-container a {
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .page-container .input-box {
+        border: 1px solid black;
+      }
+
+      .page-container .email-bar {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .page-container .email-bar a {
+        background-color: #C5FFE4;
+        color: #1D9A7D;
+        line-height: 40px;
+      }
+
+      .page-title {
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .register-button {
+        background-color: #FF7373;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        color: white;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-container">
+      <h2 class="page-title">注册</h2>
+      <div class="input-bar">
+        <p>邮箱</p>
+        <div class="input-box">
+          <input placeholder="请输入邮箱"/>
+        </div>
+      </div>
+      <div class="input-bar">
+        <p>邮箱验证码</p>
+        <div class="input-box email-bar">
+          <input placeholder="请输入邮箱验证码" 
+          oninput="value=value.replace(/[^\d]/g,'')"
+          minlength="6" maxlength="6"/>
+          <a onclick="getEmeialCode()">获取验证码</a>
+        </div>
+      </div>
+      <div class="input-bar">
+        <p>密码</p>
+        <div class="input-box">
+          <input placeholder="请输入密码"/>
+        </div>
+      </div>
+
+      <a class="register-button" onclick="registerAcc()">注册</a>
+      <p>已有账号？去<a href="/login">登录</a></p>
+    </div>
+    
+    <script>
+      function getEmeialCode() {
+        console.log(`点击了获取验证码按钮`)
+      }
+
+      function registerAcc() {
+        console.log(`点击了注册账号`)
+      }
+    </script>
+  </body>
+</html>
