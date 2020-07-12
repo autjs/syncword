@@ -7,7 +7,6 @@ const numRandom = require('number-random')
 // login
 
 router.get('/email/code', async ctx => {
-  // ctx.body = ctx.request.body
   // 取到email
   
   const email = ctx.query.email

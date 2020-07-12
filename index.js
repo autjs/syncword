@@ -1,6 +1,8 @@
 const app = require('./koa')
 const conf = require('./config')
 
+const db = require('./db')
+
 const bodyParser = require('koa-bodyparser')
 
 app.use(bodyParser())
