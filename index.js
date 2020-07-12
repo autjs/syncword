@@ -1,7 +1,9 @@
 const app = require('./koa')
 const conf = require('./config')
 
+const bodyParser = require('koa-bodyparser')
 
+app.use(bodyParser())
 // 当我们配制 ejs 模板引擎的时候
 // 配制的代码一定要放在router 配制代码之前 
 // 这个比较容易被忽略

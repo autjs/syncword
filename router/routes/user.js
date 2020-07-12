@@ -1,8 +1,24 @@
 const KoaRouter = require('koa-router')
 const router = new KoaRouter()
 
+const uEmail = require('../../utils/email')
+const numRandom = require('number-random')
 
 // login
+
+router.get('/email/code', async ctx => {
+  // ctx.body = ctx.request.body
+  // 取到email
+  
+  const email = ctx.query.email
+  // 
+  if (email) {
+    uEmail.send(email, numRandom(100000, 999999))
+    ctx.body = `已发送`
+  } else {
+    ctx.body = `email 不存在`
+  }
+})
 
 router.get('/login', async ctx => {
   await ctx.render('login')
@@ -22,7 +38,7 @@ router.get('/register', async ctx => {
 })
 
 router.post('/register', async ctx => {
-  ctx.body = `register api`
+  ctx.body = ctx.request.body
 })
 
 // logout
