@@ -4,6 +4,8 @@ const router = new KoaRouter()
 const uEmail = require('../../utils/email')
 const numRandom = require('number-random')
 
+const MailCode = require('../../db/mail-code')
+
 // login
 
 router.get('/email/code', async ctx => {
@@ -12,11 +14,25 @@ router.get('/email/code', async ctx => {
   const email = ctx.query.email
   // 
   if (email) {
-    uEmail.send(email, numRandom(100000, 999999))
+    const code = numRandom(100000, 999999)
+    uEmail.send(email, code)
     ctx.body = `已发送`
+    // 保存数据到数据库中
+    let doc = new MailCode({
+      code,
+      mail: email
+    })
+    doc.save().then(res => {
+      console.log('保存验证码成功')
+    }).catch(err => {
+      console.log(err)
+    })
+
   } else {
     ctx.body = `email 不存在`
   }
+
+  
 })
 
 router.get('/login', async ctx => {
